@@ -1,11 +1,12 @@
 import { Fragment, useState } from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { Dialog, Transition } from '@headlessui/react'
+import { LogoutIcon } from '@heroicons/react/outline'
 
-import useStore from "../../store";
+import useStore from "../store"
 
-export default function TopNavigation() {
-  const history = useHistory();
+export default function Header() {
+  const history = useHistory()
   let [isOpen, setIsOpen] = useState(false)
   let [email, setEmail] = useState('')
   let [password, setPassword] = useState('')
@@ -21,11 +22,11 @@ export default function TopNavigation() {
     setIsOpen(true)
   }
 
-  function handleEmailChange(e) {
+  function handleEmailChange(e: any) {
     setEmail(e.target.value)
   }
 
-  function handlePasswordChange(e) {
+  function handlePasswordChange(e: any) {
     setPassword(e.target.value)
   }
 
@@ -125,18 +126,19 @@ export default function TopNavigation() {
       <header className="h-20 items-center relative z-10">
         <div className="flex flex-center flex-col h-full justify-center mx-auto relative px-3 text-white z-10">
           <div className="flex items-center pl-1 relative w-full sm:ml-0 sm:pr-2 lg:max-w-68">
-            <div className="flex items-center justify-center ml-5 p-1 relative w-full sm:mr-0 sm:right-auto">
-              <Link to="/" className="block pr-5">
+            <div className="flex items-center gap-16 justify-center ml-5 p-1 relative w-full sm:mr-0 sm:right-auto">
+              <Link to="/" className="block hover:text-blue-300">
                 Home
               </Link>
-              <Link to="/trade" className="block pr-5">
+              <Link to="/trade" className="block hover:text-blue-300">
                 Trade
               </Link>
             </div>
-            <div className="container flex right-0 relative w-16">
+            <div className="container flex right-0 relative w-36">
               <div className="group hidden items-center relative w-full md:flex lg:w-72">
                 {isLogged ? (
-                  <Link to="#" className="block" onClick={logout}>
+                  <Link to="#" className="block hover:text-blue-300" onClick={logout}>
+                    <LogoutIcon className="w-5 h-5 mr-3 inline" aria-hidden="true" />
                     Log out
                   </Link>
                 ): (

@@ -1,8 +1,15 @@
 import { Menu, Transition } from '@headlessui/react'
+import { useHistory } from "react-router-dom"
 import { Fragment } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export default function TradeButton() {
+  const history = useHistory()
+
+  function goToTradePage() {
+    history.push("/trade")
+  }
+
   return (
     <div className="w-28">
       <Menu as="div" className="relative inline-block text-left">
@@ -30,8 +37,9 @@ export default function TradeButton() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? 'bg-violet-500 text-gray-900' : 'text-gray-900'
+                      active ? 'bg-violet-500 hover:bg-gray-300 text-gray-900' : 'text-gray-900'
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={goToTradePage}
                   >
                     Buy
                   </button>
@@ -41,8 +49,9 @@ export default function TradeButton() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? 'bg-violet-500 text-gray-900' : 'text-gray-900'
+                      active ? 'bg-violet-500 hover:bg-gray-300 text-gray-900' : 'text-gray-900'
                     } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={goToTradePage}
                   >
                     Sell
                   </button>

@@ -1,4 +1,4 @@
-import TopNavigation from "./topnavigation";
+import Header from "./Header";
 
 const style = {
   container: "bg-gray-900 h-screen overflow-hidden relative",
@@ -11,7 +11,7 @@ const MasterLayout: React.FC = ({ children, ...props }) => {
     <div className={style.container}>
       <div className="flex items-start">
         <div className={style.mainContainer}>
-          <TopNavigation />
+          <Header />
           <main className={style.main}>{children}</main>
         </div>
       </div>

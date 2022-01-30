@@ -6,9 +6,9 @@ import useStore from "../store";
 const Trade = () => {
   const history = useHistory();
   const isLogged = useStore(state => state.isLogged);
-  const [asset, setAsset] = useState(null);
   const [crypto, setCtypto] = useState(0);
   const [fiat, setFiat] = useState(0);
+  const [price, setPrice] = useState(0);
   const assets = useStore(state => state.assets);
   const pageLimit = useStore(state => state.pageLimit);
   const fetchAssets = useStore(state => state.fetchAssets);
@@ -22,31 +22,31 @@ const Trade = () => {
   // Fetch assets data
   useEffect(() => {
     fetchAssets(pageLimit);
-    setAsset(assets[0]);
-  }, [fetchAssets, pageLimit, assets]);
+    if(assets && price === 0) {
+      // @ts-ignore
+      setPrice(assets[0].metrics.market_data.price_usd);
+    }
+  }, [fetchAssets, pageLimit, assets, price]);
 
   function changeAsset(e: any) {
     setFiat(e.target.value * crypto);
+    setPrice(e.target.value);
   }
 
   function changeCrypto(e: any) {
     setCtypto(e.target.value);
-    // @ts-ignore
-    const price = asset.metrics.market_data.price_usd;
     setFiat(e.target.value * price);
   }
 
   function changeFiat(e: any) {
     setFiat(e.target.value);
-    // @ts-ignore
-    const price = asset.metrics.market_data.price_usd;
     setCtypto(e.target.value / price);
   }
 
   return (
     <>
       <div className="flex justify-center">
-        <div className="w-full lg:w-6/12 bg-gray-800 py-6 px-6 rounded-3xl">
+        <div className="w-full lg:w-6/12 max-w-xl bg-gray-800 mt-12 py-6 px-6 rounded-3xl">
           <div className="flex flex-col justify-center text-white items-center mb-8 px-12">
             <p className="text-2xl font-bold mb-8">Swap Crypto</p>
             <div className="w-full relative rounded-2xl shadow-sm">
