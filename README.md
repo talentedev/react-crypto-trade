@@ -27,3 +27,10 @@ email: test@email.com
 password: password
 ```
 
+## Screenshots
+
+![screenshot #1](screenshot/Screenshot_1.png)
+
+![screenshot #1](screenshot/Screenshot_2.png)
+
+![screenshot #1](screenshot/Screenshot_3.png)
