@@ -13,8 +13,7 @@ $ yarn
 
 ## Usage
 
-- Copy `.env.example` to `.env`
-- start development server with `yarn start`
+- Start development server with `yarn start`
 ```
 yarn start
 ```
