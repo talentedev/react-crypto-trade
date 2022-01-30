@@ -13,10 +13,11 @@ $ yarn
 
 ## Usage
 
+- Copy `.env.example` to `.env`
 - start development server with `yarn start`
-
-* `yarn start`
-
+```
+yarn start
+```
 now The project can be viewed in the browser at
 
 - [http://localhost:3000](http://localhost:3000)
